@@ -1,0 +1,158 @@
+# Cornell Box
+
+Shader "white"
+  shader lambert
+  diffuse 0.65 0.65 0.65
+
+Shader "gold"
+  shader phong
+  diffuse 0.75 0.60 0.23
+  specular 0.63 0.56 0.37
+  shininess 51.2
+
+Shader "plastic_blue"
+  shader phong
+  diffuse 0.51 0.51 1
+  specular 0.50 0.50 0.50
+  shininess 32
+
+Shader "rubber_yellow"
+  shader phong
+  diffuse 0.5 0.5 0.4
+  specular 0.7 0.7 0.04
+  shininess 10
+  
+Shader "emissive"
+  shader emissive
+  intensity 13.0 13.0 13.0
+
+Geometry "plane"
+  type plane
+  n 0 1 0
+  d 0
+
+Geometry "sphere"
+  type sphere
+  center 0 100 0
+  radius 100.0
+  
+# floor
+Object "floor"
+  Transform:
+    move 0 0 0
+  Shader: white
+  Geometry: plane
+  
+Object "ceiling"
+  Transform:
+    move 0 550 -225
+    rotate 180 1 0 0
+  Shader: white
+  Geometry: plane
+  
+Object "white_back_wall"
+  Transform:
+    move 0 0 -550
+    rotate 90 1 0 0
+  Shader: white
+  Geometry: plane
+  
+Object "white_front_wall"
+  Transform:
+    move 0 0 550
+    rotate -90 1 0 0
+  Shader: white
+  Geometry: plane
+  
+Object "red_left_wall"
+  Transform:
+    move 0 0 0
+    rotate -90 0 0 1
+  Shader:
+    shader lambert
+    diffuse 0.65 0.217 0.217
+  Geometry: plane
+  
+Object "green_right_wall"
+  Transform:
+    move 550 0 0
+    rotate 90 0 0 1
+  Shader:
+    shader lambert
+    diffuse 0.217 0.65 0.217
+  Geometry: plane
+  
+ObjectGroup "cornell"
+  Object: floor
+  Object: ceiling
+  Object: white_back_wall
+  Object: white_front_wall
+  Object: red_left_wall
+  Object: green_right_wall
+
+Object "sphere1"
+  Transform:
+    move 150 0 -300
+  Shader: plastic_blue
+  Geometry: sphere
+  
+Object "sphere2"
+  Transform:
+    move 375 0 -150
+  Shader: rubber_yellow
+  Geometry: sphere
+  
+# light
+Object "light_geo1"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -332
+    v3 343 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+
+Object "light_geo2"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -227
+    v3 213 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+  
+ObjectGroup "light_geometry"
+  Object: light_geo1
+  Object: light_geo2
+
+Light "area_light"
+  type area
+  center 278 548 -265.5
+  extent0 65 0 0
+  extent1 0 0 52.5
+  intensity 13 13 13
+
+ObjectGroup "light_geometry"
+  Object: light_tri1
+  Object: light_tri2
+
+Options "default"
+  name spheres-phong
+  renderer pathtracer
+  raysperpixel 1024
+  directlighting 1
+
+Render "render"
+  Scene:
+    ObjectGroup: cornell
+    Object: sphere1
+    Object: sphere2
+    Light: area_light
+    ObjectGroup: light_geometry
+  Camera:
+    position 275 275 800
+    lookat 275 275 799
+    fov 38.5
+  Options: default

@@ -1,0 +1,357 @@
+# Cornell Box
+
+Shader "white"
+  shader lambert
+  diffuse 0.76 0.75 0.5
+
+Shader "red"
+  shader lambert
+  diffuse 0.63 0.06 0.04
+  
+Shader "green"
+  shader lambert
+  diffuse 0.15 0.48 0.09
+
+Shader "emissive"
+  shader emissive
+  intensity 18.4 15.6 8.0
+  
+# Floor object
+Object "floor1"
+  Geometry:
+    type triangle
+    v1 556 0 0
+    v2 556 0 -559.2
+    v3 0 0 -559.2
+  Shader: white
+
+Object "floor2"
+  Geometry:
+    type triangle
+    v1 556 0 0
+    v2 0 0 -559.2
+    v3 0 0 0
+  Shader: white
+
+# Ceiling
+Object "ceiling1"
+  Geometry:
+    type triangle
+    v1 556 548.8 0
+    v2 0 548.8 0
+    v3 0 548.8 -559.2
+  Shader: white
+
+Object "ceiling2"
+  Geometry:
+    type triangle
+    v1 556 548.8 0
+    v2 0 548.8 -559.2
+    v3 556 548.8 -559.2
+  Shader: white
+
+# Back wall
+Object "backwall1"
+  Geometry:
+    type triangle
+    v1 556 0 -559.2
+    v2 556 548.8 -559.2
+    v3 0 548.8 -559.2
+  Shader: white
+
+Object "backwall2"
+  Geometry:
+    type triangle
+    v1 556 0 -559.2
+    v2 0 548.8 -559.2
+    v3 0 0 -559.2
+  Shader: white
+  
+# Left wall
+Object "leftwall1"
+  Geometry:
+    type triangle
+    v1 0 0 0
+    v2 0 0 -559.2
+    v3 0 548.8 -559.2
+  Shader: red
+
+Object "leftwall2"
+  Geometry:
+    type triangle
+    v1 0 0 0
+    v2 0 548.8 -559.2
+    v3 0 548.8 0
+  Shader: red
+  
+# Right wall
+Object "rightwall1"
+  Geometry:
+    type triangle
+    v1 556 0 -559.2
+    v2 556 0 0
+    v3 556 548.8 0
+  Shader: green
+
+Object "rightwall2"
+  Geometry:
+    type triangle
+    v1 556 0 -559.2
+    v2 556 548.8 0
+    v3 556 548.8 -559.2
+  Shader: green
+  
+ObjectGroup "cornell"
+  Object: floor1
+  Object: floor2
+  Object: ceiling1
+  Object: ceiling2
+  Object: backwall1
+  Object: backwall2
+  Object: leftwall1
+  Object: leftwall2
+  Object: rightwall1
+  Object: rightwall2
+
+# short block
+
+Object "short1a"
+  Geometry:
+    type triangle
+    v1 130.0 165.0 -65.0 
+    v2 290.0 165.0 -114.0
+    v3 240.0 165.0 -272.0
+  Shader: white
+
+Object "short1b"
+  Geometry:
+    type triangle
+    v1 130.0 165.0 -65.0 
+    v2 240.0 165.0 -272.0
+    v3 82.0 165.0 -225.0
+  Shader: white
+
+Object "short2a"
+  Geometry:
+    type triangle
+    v1 290.0 0.0 -114.0
+    v2 240.0 0.0 -272.0
+    v3 240.0 165.0 -272.0
+  Shader: white
+
+Object "short2b"
+  Geometry:
+    type triangle
+    v1 290.0 0.0 -114.0
+    v2 240.0 165.0 -272.0
+    v3 290.0 165.0 -114.0
+  Shader: white
+
+Object "short3a"
+  Geometry:
+    type triangle
+    v1 130.0 0.0 -65.0
+    v2 290.0 0.0 -114.0
+    v3 290.0 165.0 -114.0
+  Shader: white
+
+Object "short3b"
+  Geometry:
+    type triangle
+    v1 130.0 0.0 -65.0
+    v2 290.0 165.0 -114.0
+    v3 130.0 165.0 -65.0
+  Shader: white
+
+Object "short4a"
+  Geometry:
+    type triangle
+    v1 82.0 0.0 -225.0
+    v2 130.0 0.0 -65.0
+    v3 130.0 165.0 -65.0
+  Shader: white
+
+Object "short4b"
+  Geometry:
+    type triangle
+    v1 82.0 0.0 -225.0
+    v2 130.0 165.0 -65.0
+    v3 82.0 165.0 -225.0
+  Shader: white
+ 
+Object "short5a"
+  Geometry:
+    type triangle
+    v1 240.0 0.0 -272.0
+    v3 82.0 0.0 -225.0
+    v2 82.0 165.0 -225.0
+  Shader: white
+
+Object "short5b"
+  Geometry:
+    type triangle
+    v1 240.0 0.0 -272.0
+    v2 82.0 165.0 -225.0
+    v3 240.0 165.0 -272.0
+  Shader: white
+
+# short block
+ObjectGroup "shortblock"
+  Object: short1a
+  Object: short1b
+  Object: short2a
+  Object: short2b
+  Object: short3a
+  Object: short3b
+  Object: short4a
+  Object: short4b
+  Object: short5a
+  Object: short5b
+
+# tall block
+
+Object "tall1a"
+  Geometry:
+    type triangle
+    v1 423.0 330.0 -247.0
+    v2 472.0 330.0 -406.0
+    v3 314.0 330.0 -456.0
+  Shader: white
+
+Object "tall1b"
+  Geometry:
+    type triangle
+    v1 423.0 330.0 -247.0
+    v2 314.0 330.0 -456.0
+    v3 265.0 330.0 -296.0
+  Shader: white
+
+Object "tall2a"
+  Geometry:
+    type triangle
+    v1 423.0 0.0 -247.0
+    v2 472.0 0.0 -406.0
+    v3 472.0 330.0 -406.0
+  Shader: white
+
+Object "tall2b"
+  Geometry:
+    type triangle
+    v1 423.0 0.0 -247.0
+    v2 472.0 330.0 -406.0
+    v3 423.0 330.0 -247.0
+  Shader: white
+
+Object "tall3a"
+  Geometry:
+    type triangle
+    v1 472.0 0.0 -406.0
+    v2 314.0 0.0 -456.0
+    v3 314.0 330.0 -456.0
+  Shader: white
+
+Object "tall3b"
+  Geometry:
+    type triangle
+    v1 472.0 0.0 -406.0
+    v2 314.0 330.0 -456.0
+    v3 472.0 330.0 -406.0
+  Shader: white
+
+Object "tall4a"
+  Geometry:
+    type triangle
+    v1 314.0 0.0 -456.0
+    v2 265.0 0.0 -296.0
+    v3 265.0 330.0 -296.0
+  Shader: white
+
+Object "tall4b"
+  Geometry:
+    type triangle
+    v1 314.0 0.0 -456.0
+    v2 265.0 330.0 -296.0
+    v3 314.0 330.0 -456.0
+  Shader: white
+
+Object "tall5a"
+  Geometry:
+    type triangle
+    v1 265.0 0.0 -296.0
+    v2 423.0 0.0 -247.0
+    v3 423.0 330.0 -247.0
+  Shader: white
+
+Object "tall5b"
+  Geometry:
+    type triangle
+    v1 265.0 0.0 -296.0
+    v2 423.0 330.0 -247.0
+    v3 265.0 330.0 -296.0
+  Shader: white
+
+# tall block
+ObjectGroup "tallblock"
+  Object: tall1a
+  Object: tall1b
+  Object: tall2a
+  Object: tall2b
+  Object: tall3a
+  Object: tall3b
+  Object: tall4a
+  Object: tall4b
+  Object: tall5a
+  Object: tall5b
+  
+# light
+Object "light_geo1"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -332
+    v3 343 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+
+Object "light_geo2"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -227
+    v3 213 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+  
+ObjectGroup "light_geometry"
+  Object: light_geo1
+  Object: light_geo2
+
+Light "area_light"
+  type area
+  center 278 548 -265.5
+  extent0 65 0 0
+  extent1 0 0 52.5
+  intensity 18.4 15.6 8.0  
+
+Options "default"
+  name cornell-pm
+  renderer photonmapper
+  raysperpixel 4
+  photons 100000
+  queryphotons 500
+  querydistance 1.0
+
+Render "render"
+  Scene:
+    ObjectGroup: cornell
+    ObjectGroup: shortblock
+    ObjectGroup: tallblock
+    Light: area_light
+    ObjectGroup: light_geometry
+  Camera:
+    position 278 273 800
+    lookat 278 273 799
+    fov 38.5
+  Options: default

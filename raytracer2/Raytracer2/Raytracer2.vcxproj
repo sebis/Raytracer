@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|x64">
+      <Configuration>Debug</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|x64">
+      <Configuration>Release</Configuration>
+      <Platform>x64</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{FA0BCCC1-AD7E-485E-8C9D-2FDF7C64F719}</ProjectGuid>
+    <RootNamespace>Raytracer2</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v110</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <LibraryPath>$(SolutionDir)\Raytracer2\FreeImage;C:\Source\glew-1.9.0\lib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Source\glew-1.9.0\include;C:\Source\glm-0.9.4.4;$(SolutionDir)\..\pane;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <LibraryPath>$(ProjectDir)\FreeImage;C:\Source\glew-1.9.0\lib;$(SolutionDir)$(Platform)\$(Configuration);$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SolutionDir)\..\pane;C:\Source\glew-1.9.0\include;C:\Source\glm-0.9.4.4;C:\Source\glfw-3.0.bin.WIN64\include;$(IncludePath)</IncludePath>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Pane.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <PreprocessorDefinitions>GLEW_STATIC;GLM_PRECISION_HIGHP_FLOAT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>Pane_d.lib;glew32s.lib;opengl32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <PreprocessorDefinitions>NDEBUG;GLEW_STATIC;GLM_PRECISION_HIGHP_FLOAT;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+      <AdditionalDependencies>Pane.lib;glew32s.lib;opengl32.lib;FreeImage.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <Profile>true</Profile>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="BVH.cpp" />
+    <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="DirectionalLight.cpp" />
+    <ClCompile Include="EmissiveShader.cpp" />
+    <ClCompile Include="Film.cpp" />
+    <ClCompile Include="GLShader.cpp" />
+    <ClCompile Include="HGPhaseFunction.cpp" />
+    <ClCompile Include="HomogeneousMedium.cpp" />
+    <ClCompile Include="IsotropicPhaseFunction.cpp" />
+    <ClCompile Include="LambertShader.cpp" />
+    <ClCompile Include="Main.cpp" />
+    <ClCompile Include="Medium.cpp" />
+    <ClCompile Include="MeshGeometry.cpp" />
+    <ClCompile Include="MeshImporter.cpp" />
+    <ClCompile Include="MeshImporterOBJ.cpp" />
+    <ClCompile Include="MeshImporterPLY.cpp" />
+    <ClCompile Include="noise1234.cpp" />
+    <ClCompile Include="DensityMedium.cpp" />
+    <ClCompile Include="Parser.cpp" />
+    <ClCompile Include="PathTracer.cpp" />
+    <ClCompile Include="PhongShader.cpp" />
+    <ClCompile Include="PhotonMap.cpp" />
+    <ClCompile Include="PhotonMapper.cpp" />
+    <ClCompile Include="PlanarLight.cpp" />
+    <ClCompile Include="Plane.cpp" />
+    <ClCompile Include="PointLight.cpp" />
+    <ClCompile Include="RaytracerApp.cpp" />
+    <ClCompile Include="Object.cpp" />
+    <ClCompile Include="Raytracer.cpp" />
+    <ClCompile Include="ReflectShader.cpp" />
+    <ClCompile Include="RefractShader.cpp" />
+    <ClCompile Include="Renderer.cpp" />
+    <ClCompile Include="Sampling.cpp" />
+    <ClCompile Include="Scene.cpp" />
+    <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="Transform.cpp" />
+    <ClCompile Include="Triangle.cpp" />
+    <ClCompile Include="Utils.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="BVH.h" />
+    <ClInclude Include="Camera.h" />
+    <ClInclude Include="Constants.h" />
+    <ClInclude Include="DirectionalLight.h" />
+    <ClInclude Include="EmissiveShader.h" />
+    <ClInclude Include="Film.h" />
+    <ClInclude Include="Geometry.h" />
+    <ClInclude Include="GLMExtensions.h" />
+    <ClInclude Include="GLShader.h" />
+    <ClInclude Include="HGPhaseFunction.h" />
+    <ClInclude Include="HomogeneousMedium.h" />
+    <ClInclude Include="Intersection.h" />
+    <ClInclude Include="IsotropicPhaseFunction.h" />
+    <ClInclude Include="LambertShader.h" />
+    <ClInclude Include="Light.h" />
+    <ClInclude Include="Medium.h" />
+    <ClInclude Include="Mesh.h" />
+    <ClInclude Include="MeshGeometry.h" />
+    <ClInclude Include="MeshImporter.h" />
+    <ClInclude Include="MeshImporterOBJ.h" />
+    <ClInclude Include="MeshImporterPLY.h" />
+    <ClInclude Include="noise1234.h" />
+    <ClInclude Include="DensityMedium.h" />
+    <ClInclude Include="Object.h" />
+    <ClInclude Include="Options.h" />
+    <ClInclude Include="Parser.h" />
+    <ClInclude Include="PathTracer.h" />
+    <ClInclude Include="PhaseFunction.h" />
+    <ClInclude Include="PhongShader.h" />
+    <ClInclude Include="PhotonMap.h" />
+    <ClInclude Include="PhotonMapper.h" />
+    <ClInclude Include="PlanarLight.h" />
+    <ClInclude Include="Plane.h" />
+    <ClInclude Include="PointLight.h" />
+    <ClInclude Include="RaytracerApp.h" />
+    <ClInclude Include="Raytracer.h" />
+    <ClInclude Include="ReflectShader.h" />
+    <ClInclude Include="RefractShader.h" />
+    <ClInclude Include="Renderer.h" />
+    <ClInclude Include="Renderers.h" />
+    <ClInclude Include="Sampling.h" />
+    <ClInclude Include="Scene.h" />
+    <ClInclude Include="Shader.h" />
+    <ClInclude Include="Sphere.h" />
+    <ClInclude Include="SurfacePoint.h" />
+    <ClInclude Include="Transform.h" />
+    <ClInclude Include="Triangle.h" />
+    <ClInclude Include="Utils.h" />
+    <ClInclude Include="VolumeRay.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pane\Pane\Pane.vcxproj">
+      <Project>{24398e1d-8963-4b6f-99f5-08d6df5b9926}</Project>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

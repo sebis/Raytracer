@@ -1,0 +1,92 @@
+Shader "white"
+  shader lambert
+  diffuse 0.65 0.65 0.65
+
+Shader "emissive"
+  shader emissive
+  intensity 13.0 13.0 13.0
+
+Geometry "plane"
+  type plane
+  n 0 1 0
+  d 0
+
+Geometry "sphere"
+  type sphere
+  center 0 0 0
+  radius 100.0
+
+Object "floor"
+  Transform:
+    move 0 0 0
+  Shader: white
+  Geometry: plane
+
+Object "sphere_obj"
+  Transform:
+    move 350 100 -300
+  Shader: white
+  Geometry: sphere
+
+# light
+Object "light_geo1"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -332
+    v3 343 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+
+Object "light_geo2"
+  Geometry:
+    type triangle
+    v1 343 548.8 -227
+    v2 213 548.8 -227
+    v3 213 548.8 -332
+  Shader: emissive
+  Transform:
+    move 0 -0.8 0
+  
+ObjectGroup "light_geometry"
+  Object: light_geo1
+  Object: light_geo2
+
+Light "area_light"
+  type area
+  center 278 548 -265.5
+  extent0 65 0 0
+  extent1 0 0 52.5
+  intensity 13 13 13
+
+Medium "fog"
+  Geometry:
+    type sphere
+    center 250 250 -250
+    radius 500
+  PhaseFunction:
+    function isotropic
+  a 0.001
+  s 0.001
+  emission 0 0 0
+
+Options "default"
+  name fog-simple
+  renderer pathtracer
+  raysperpixel 6400
+  singlescattering 1
+  directlighting 1
+
+Render "render"
+  Scene:
+    Object: floor
+    Object: sphere_obj
+    Light: area_light
+    ObjectGroup: light_geometry
+    Medium: fog
+  Camera:
+    position 278 273 800
+    lookat 278 273 799
+    fov 38.5
+  Options: default

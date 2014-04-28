@@ -1,0 +1,24 @@
+Raytracer2 - Twice the raytracer
+
+Raytracer2 is a renderer framework that implements path tracing and
+photon mapping.
+
+Raytracer2 is free software and released under the Modified BSD license
+(see COPYING).
+
+Copyright 2014 Sebastian Eriksson, email: first.last[at]iki[dot]fi
+
+
+Compiling:
+
+* Tested on VS2012 SP1. Currently only build configurations for x64 are
+  set.
+* Requires GLFW 3.0, GLM 0.9.4.4 and GLEW 1.9.0, and you have to set the
+  paths for the include/ and lib/ directories in the configuration
+  settings
+
+Running:
+
+raytracer2.exe -jN <filename>
+
+-jN  -  Number of rendering threads to dispatch
